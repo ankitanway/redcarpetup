@@ -1,0 +1,23 @@
+-::Install Ansible Master::-
+
+sudo apt-get update
+sudo apt install software-properties-common 
+sudo apt-add-repository ppa:ansible/ansible 
+sudo apt update
+sudo apt install ansible
+                                  -::On hosts/Slave::-
+sudo apt-get update
+sudo apt-get install python
+
+                                -::Steps To KeyLess SSH::-
+
+On Master: 
+ssh ubuntu@<slave-ip>
+cd .ssh
+ssh-keygen
+>> now cat on id_rsa.pub and copy code to slave .ssh dir and paste in authorized_keys
+On slave: sudo nano .ssh/authorized_keys
+
+[servers]  >> group name can be anything
+sudo nano /etc/ansible/hosts
+hostl ansible_ssh_host-203.0.113.1
